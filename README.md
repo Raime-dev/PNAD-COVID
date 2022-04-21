@@ -9,33 +9,33 @@ help("get_covid")
 
 dadosPNADCOVID19 <- get_covid(year = 2020, month = 5)
 class(dadosPNADCOVID19)
-# vou salvar para não precisar chamar novamente
+# Vou salvar para não precisar chamar novamente
 saveRDS(dadosPNADCOVID19, file = "dados_2020_05.rds")
 
-# para chamar do rds, fazer:
+# Para chamar do rds, fazer:
 dadosPNADCOVID_2020_05 <- readRDS("D:/Programação e Projetos/R/Projetos/Projeto 2 - PNAD Covid/dados_2020_05.rds")
 
 
-# se quiser somente algumas variaveis ----
+# Se quiser somente algumas variaveis ----
 dadosPNADCOVID19 <- get_covid(year = 2020, month = 5, vars = c("C001", "C002"))
-# o comando abaixo traz as caracteristicas do plano amostral
+# O comando abaixo traz as caracteristicas do plano amostral
 dadosPNADCOVID19
-# vendo a classe do objeto: 'survey.design2' 'survey.design'
+# Vendo a classe do objeto: 'survey.design2' 'survey.design'
 class(dadosPNADCOVID19)  # 'survey.design2' 'survey.design'
-# vou salvar para não precisar chamar novamente
+# Vou salvar para não precisar chamar novamente
 saveRDS(dadosPNADCOVID19, file = "dados_2020_05_srv.rds")
 
-# com desing false: retorna tibble design
+# Com desing false: retorna tibble design
 dadosPNADCOVID19_brutos <- get_covid(year = 2020, month = 5, vars = c("C001", "C002"),
                                      design = FALSE)
 class(dadosPNADCOVID19_brutos)  # 'tbl_df'     'tbl'        'data.frame'
 dadosPNADCOVID19_brutos
 saveRDS(dadosPNADCOVID19_brutos, file = "dados_2020_05_df.rds")
 
-# sem labels
+# Sem labels
 dadosPNADCOVID19_brutos_sem <- get_covid(year = 2020, month = 5, vars = c("C001",
                                                                           "C002"), labels = FALSE, design = FALSE)
-# os níveis das categorias são representados por números: UF Rondônia = 11
+# Os níveis das categorias são representados por números: UF Rondônia = 11
 dadosPNADCOVID19_brutos_sem
 saveRDS(dadosPNADCOVID19_brutos_sem, file = "dados_2020_05_df_sem.rds")
 
